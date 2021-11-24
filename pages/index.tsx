@@ -4,7 +4,7 @@ import {
   Tr
 } from "@bootstrap-styled/v4";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Layout } from "../components";
 import httpClient from "../services/httpClient";
 
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
     setRequestEntranceCount(Object.keys(res.data).length)
   }
 
-  useEffect(() => {
+  const handleRequests = useCallback(() => {
     if (typeof window !== "undefined") {
       const ls = localStorage.getItem("auth")
       const userData = ls && JSON.parse(ls);
@@ -43,6 +43,10 @@ const Home: NextPage = () => {
       requestEntrance(userData);
     }
   }, [])
+
+  useEffect(() => {
+    setInterval(() => handleRequests(), 1000)
+  }, [handleRequests])
 
   return (
     <Layout>
