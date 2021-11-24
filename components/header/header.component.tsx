@@ -22,7 +22,7 @@ export const HeaderComponent = ({handleChangeFullScreen}: IProps) => {
     }
     return (<>
         <Wrapper>
-            <HeaderColumn>Logo</HeaderColumn>
+            <HeaderColumn>DigiTown</HeaderColumn>
             <HeaderColumn alignContent="right">
                 <InvisibleButton onClick={handleFullScreen} id="fullScreenButton">
                     {fullScreen ? <DisableFullScreenIcon /> : <FullScreenIcon />}
