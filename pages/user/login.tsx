@@ -1,8 +1,8 @@
-import { H1 } from "@bootstrap-styled/v4";
 import type { NextPage } from "next";
+import { LoginForm } from "../../components";
 
 const Login: NextPage = () => {
-  return <H1>Login</H1>;
+  return <LoginForm/>;
 };
 
 export default Login;

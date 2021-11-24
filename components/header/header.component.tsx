@@ -1,4 +1,5 @@
 import { Tooltip } from '@bootstrap-styled/v4';
+import { useRouter } from 'next/router';
 import { useCallback, useState } from "react";
 import { DisableFullScreenIcon, FullScreenIcon, HeaderColumn, InvisibleButton, LogoutIcon, Wrapper } from "./header.styled";
 
@@ -7,6 +8,7 @@ interface IProps {
 }
 
 export const HeaderComponent = ({handleChangeFullScreen}: IProps) => {
+    const router = useRouter()
     const [tooltipState, setTooltipState] = useState({ logoutIsOpen: false, fullScreenIsOpen: false })
     const [fullScreen, setFullScreen] = useState(true);
 
@@ -16,7 +18,7 @@ export const HeaderComponent = ({handleChangeFullScreen}: IProps) => {
     }, [fullScreen, handleChangeFullScreen])
 
     const handleLogout = () => {
-        console.log('logout')
+        router.push('/user/login', undefined, { shallow: true })
     }
     return (<>
         <Wrapper>
